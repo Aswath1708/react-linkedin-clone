@@ -1,0 +1,166 @@
+.signUpPage {
+  background-color: #eee;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerContainer {
+  color: #0a66c2;
+  font-size: 18px;
+  padding-top: 1rem;
+  padding-left: 10rem;
+  > h1 {
+    cursor: pointer;
+  }
+}
+
+.signUpFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  flex: 1;
+}
+
+.signUpFormContainer h1 {
+  font-weight: 400;
+  margin-top: 0.5rem;
+}
+
+form {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 28%;
+  gap: 5px;
+  padding: 1.25rem 1.5rem 1.5rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.signUpFormContainer form > input {
+  padding: 0.45rem;
+  border-radius: 0.25rem;
+  border: 1px solid #333;
+  width: 100%;
+}
+
+.signUpFormContainer form > input:focus {
+  outline: none;
+}
+
+.signUpFormContainer label[for="passWord"],
+.signUpFormContainer label[for="mailOrPhone"] {
+  margin-top: 0.75rem;
+}
+
+.passWordContainer {
+  display: flex;
+  border: 1px solid #333;
+  border-radius: 0.25rem;
+}
+
+.passWordContainer input {
+  flex: 1;
+  border: none;
+  padding: 0.45rem;
+  border-radius: 0.25rem;
+}
+
+.passWordContainer input:focus {
+  outline: none;
+}
+
+.passWordContainer button {
+  border: none;
+  background-color: transparent;
+  padding: 0.45rem;
+}
+
+.termsAndConditions {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.termsAndConditions a {
+  text-decoration: none;
+  margin: 0 3px;
+  color: #0a66c2;
+  font-weight: 600;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.buttons button {
+  padding: 1rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #0a66c2;
+  color: #fff;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.or {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.or span {
+  background-color: #ddd;
+  height: 1px;
+  width: 100%;
+}
+
+.signInLink {
+  text-align: center;
+}
+
+.signInLink a {
+  text-decoration: none;
+  color: #0a66c2;
+  font-weight: 600;
+  margin: 0 5px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.footer {
+  display: flex;
+  gap: 1rem;
+  color: #555;
+  font-size: 12px;
+  justify-content: center;
+  background-color: #fff;
+  padding: 0.75rem 0 1.5rem 0;
+  align-items: center;
+  font-weight: 500;
+}
+
+.footer p:first-child {
+  color: #000;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer select {
+  background-color: transparent;
+  border: none;
+  color: #555;
+}

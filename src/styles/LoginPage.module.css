@@ -1,0 +1,210 @@
+.loginPage {
+  background-color: #fff;
+  color: gray;
+  padding-left: 12vw;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.loginNavBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  padding-right: 12vw;
+}
+
+.loginNavBar h1 {
+  color: #007fbc;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.loginNavBar > div {
+  display: flex;
+}
+
+.loginNavBar ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.loginNavBar ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 13px;
+}
+
+.loginNavBar ul li svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.loginNavBar ul li:hover {
+  color: #000;
+  cursor: pointer;
+}
+
+.loginNavBar ul li:last-child {
+  content: "";
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+.loginNavBar > div > div {
+  display: flex;
+  align-items: center;
+}
+
+.loginNavBar div a {
+  color: rgb(40, 40, 40);
+  text-decoration: none;
+  padding: 1rem 1.25rem;
+  margin: 0 10px 0 10px;
+  border-radius: 2rem;
+}
+
+.loginNavBar div a:hover {
+  background-color: #ddd;
+}
+
+.loginNavBar button {
+  text-align: center;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 600;
+  color: #0a66c2;
+  background-color: transparent;
+  border: 1px solid #0a66c2;
+  padding: 0.75rem 1.25rem;
+  border-radius: 2.5rem;
+}
+
+.loginNavBar button:hover {
+  background-color: #0a66c21f;
+}
+
+.loginFormContainer {
+  background: url("../assets/Login.svg");
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 55%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginFormContainer h1 {
+  color: #8f5849;
+  font-weight: 300;
+  font-size: 58px;
+  width: 48vw;
+  margin-top: 3rem;
+}
+
+.loginFormContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 30%;
+  padding: 0;
+}
+
+.loginFormContainer form input,
+.loginFormContainer form section button {
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.loginFormContainer form label {
+  margin-top: 1rem;
+  color: rgb(70, 70, 70);
+}
+
+.loginFormContainer form > input {
+  border: 1px solid black;
+}
+
+.loginFormContainer form>input:focus{
+  outline: none;
+}
+
+.passWordContainer {
+  border: 1px solid black;
+  display: flex;
+  border-radius: 0.25rem;
+}
+
+.loginFormContainer form > section > input {
+  border: none;
+  flex: 1;
+}
+
+.loginFormContainer form > section > input:focus {
+  outline: none;
+}
+
+.loginFormContainer form section button {
+  background-color: white;
+  border: none;
+  color: #0a66c2;
+}
+
+.loginFormContainer form > a {
+  text-decoration: none;
+  font-weight: 600;
+  margin: 1rem 0;
+  color: #0a66c2;
+}
+
+.loginFormContainer form > a:hover {
+  text-decoration: underline;
+}
+
+.signInButton {
+  padding: 1rem;
+  border-radius: 3rem;
+  border: none;
+  background-color: #0a66c2;
+  color: #fff;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+}
+
+.or{
+  display: flex; 
+ justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #333;
+}
+
+.or span{
+  background-color: gray;
+  width: 100%;
+  height: 1px;
+}
+
+.joinNowButton{
+  padding: 1rem;
+  border-radius: 3rem;
+  border: 2px solid #333;
+  color: #333;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: transparent;
+}
