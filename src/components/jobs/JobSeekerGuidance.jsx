@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from '../../styles/jobs/JobSeekerGuidance.module.css';
 import React from "react";
 import Footer from '../home/Footer';
+import { ToastContainer, toast } from "react-toastify";
 
 const JobSeekerGuidance = () => {
+  const notify =()=> toast.info("Under Construction!");
   return (
     <div className={styles.jobSeekerGuidanceSection}>
     <div className={styles.jobSeekerGuidanceCard}>
@@ -15,10 +17,6 @@ const JobSeekerGuidance = () => {
       <section className={styles.imageContainer}>
         <p>I want to improve my resume</p>
         <div>
-          <img
-            src="https://www.linkedin.com/dms/prv/image/C4D0DAQFdDVwn9b17iA/learning-public-crop_60_100/0/1568251157263?m=AQIDEz-Cfrtg9gAAAYtI59f85aWuMvfZ_8LIlFGVGUVLusfPNPgisbpuqw&e=1697821635&v=beta&t=MnvHUK33RSg1stlTqwcDyQPuBzRZlCf5zDwfLsHEAls"
-            alt="resume-icon-image"
-          />
         </div>
       </section>
       <section className={styles.showMoreContainer}>
@@ -27,7 +25,8 @@ const JobSeekerGuidance = () => {
           improve your resume and grow your network, to help you land your next
           opportunity.
         </p>
-        <a href="#">
+        <ToastContainer/>
+        <a href="#" onClick={notify}>
           Show more
           <FontAwesomeIcon icon={faArrowRight} />
         </a>

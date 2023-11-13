@@ -1,0 +1,42 @@
+:root{
+  --color-grey:#ffffffe6;
+}
+
+.navBar {
+    display: flex;
+    background-color: #1b1f23;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding: 0 10%;
+  }
+  .logoSearchBar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    > svg {
+      cursor: pointer;
+    }
+  }
+  .search {
+    padding: 0.65rem;
+    padding-left: 0.75rem;
+    width: 55%;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #38434f;
+    color: var(--color-grey);
+    transition: 0.4s;
+    &:focus {
+      width: 80%;
+    }
+    &::placeholder {
+      color: var(--color-grey);
+      font-family: inherit;
+    }
+  }
+  
+
+  

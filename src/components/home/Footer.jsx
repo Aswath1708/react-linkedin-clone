@@ -1,27 +1,19 @@
 import React from "react";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { getHomeFooterLinks } from "../../utils/getFooterLinks";
+import styles from '../../styles/footer/HomeFooter.module.css';
 
 const Footer = () => {
+  const arrayOfFooterLinks = getHomeFooterLinks();
   return (
-    <div className="footer">
-      <section className="footer-links">
-        <p>About</p>
-        <p>Accessibility</p>
-        <p>Help Center</p>
-        <p>
-          Privacy & Terms <FontAwesomeIcon icon={faCaretDown} />
-        </p>
-        <p>Ad Choices</p>
-        <p>Advertising</p>
-        <p>
-          Business Services <FontAwesomeIcon icon={faCaretDown} />
-        </p>
-        <p>Get the LinkedIn app</p>
-        <p>More</p>
+    <div className={styles.footer}>
+      <section className={styles.footerLinks}>
+        {arrayOfFooterLinks.map((link, i) => {
+          return <p key={i}>{link}</p>;
+        })}
       </section>
-      <section className="footer-text">
+      <section className={styles.footerText}>
         <span>
           Linked <FontAwesomeIcon icon={faLinkedin} style={{ color: "#fff" }} />
         </span>

@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import LoginPage from "./components/pages/authentication/LoginPage";
 import SignUp from "./components/pages/authentication/SignUp";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/navbar/Navbar";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Me } from "./components/navlinks/Me";
 import PageNotFound from "./components/pages/PageNotFound";

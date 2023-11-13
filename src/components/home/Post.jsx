@@ -4,7 +4,7 @@ import {
   faPaperPlane,
   faRepeat,
 } from "@fortawesome/free-solid-svg-icons";
-import { ReactComponent as SolidLikeBtn } from "../../assets/SolidLikeBtn.svg";
+import { ReactComponent as SolidLikeBtn } from "../../assets/likeButton/SolidLikeBtn.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";

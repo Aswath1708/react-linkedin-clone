@@ -1,6 +1,6 @@
 .searchFilterContainer {
   background-color: #1b1f23;
-  width: 40%;
+  width: 100%;
   border-radius: 0.5rem;
   padding: 1rem;
   display: flex;
@@ -15,7 +15,7 @@
       > button {
         position: fixed;
         top: 12%;
-        left: 42%;
+        left: 50%;
         display: flex;
         gap: 5px;
         align-items: center;

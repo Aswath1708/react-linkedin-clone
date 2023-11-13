@@ -33,7 +33,7 @@ export const ProfileCard = () => {
         Access exclusive tools & insights
         <div>
           <FontAwesomeIcon icon={faSquare} />
-          <a href="#">Try Premium for free</a>
+          <Link to={"/premium"}>Try Premium for free</Link>
         </div>
       </div>
       <div>

@@ -1,5 +1,5 @@
 .jobSeekerGuidanceSection{
-    width: 22%;
+width: 30%;
 }
 
 .jobSeekerGuidanceCard {
@@ -29,9 +29,12 @@
   }
   > div {
     display: flex;
-    > img {
-      border-radius: 0.5rem;
-    }
+    background: url(../../assets/jobs/JobSeeker.png);
+    height: 4rem;
+    width: 30%;
+    border-radius: 0.5rem;
+    background-position: center;
+    background-size: cover;
   }
 }
 

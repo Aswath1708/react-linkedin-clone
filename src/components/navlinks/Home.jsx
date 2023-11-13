@@ -12,16 +12,16 @@ export const Home = () => {
     <div className="home">
       <div>
         <ProfileCard />
-        <DiscoverMore />
+        <DiscoverMore/>
       </div>
       <div>
         <Newpost />
         <div className="sort-by"></div>
         <Posts />
       </div>
-      <div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem"}}>
         <News />
-        <PremiumCard />
+        <PremiumCard/>
         <Footer />
       </div>
     </div>
