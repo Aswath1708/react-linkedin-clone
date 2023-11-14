@@ -1,4 +1,3 @@
-import { Outlet, Route, Routes } from "react-router-dom";
 import DiscoverMore from "../home/DiscoverMore";
 import Footer from "../home/Footer";
 import { Newpost } from "../home/Newpost";

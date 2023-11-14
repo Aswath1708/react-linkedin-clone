@@ -1,22 +1,27 @@
 import React from "react";
-import styles from "../../../styles/authentication/SignUpPage.module.css";
+import styles from "../../styles/authentication/SignUpPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import LoginFooter from "../../footer/LoginFooter";
+import LoginFooter from "../footer/LoginFooter";
 import {
   getEmailRegEx,
   getPassWordRegEx,
   getUserNameRegEx,
-} from "../../../utils/getRegEx";
+} from "../../utils/getRegEx";
 import {
   getEmailErrorMessage,
   getPassWordErrorMessage,
   getUserNameErrorMessage,
-} from "../../../utils/getErrorMessages";
+} from "../../utils/getErrorMessages";
+import {
+  getSuccessToast,
+  getErrorToast,
+} from "../../utils/getToastNotification";
 import axios from "axios";
-import { getProjectID } from "../../../utils/getProjectID";
+import { getProjectID } from "../../utils/getProjectID";
+import { ToastContainer } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -71,8 +76,15 @@ const SignUp = () => {
           projectID: getProjectID(),
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res.data);
+        getSuccessToast(res.data.status);
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        getErrorToast(err.response.data.message);
+      });
   };
 
   const handlePasswordCheck = (e) => {
@@ -87,6 +99,7 @@ const SignUp = () => {
           <FontAwesomeIcon icon={faLinkedin} />
         </h1>
       </div>
+      <ToastContainer/>
       <div className={styles.signUpFormContainer}>
         <h1>Join LinkedIn to find the right job</h1>
         <form onSubmit={handleSubmit}>

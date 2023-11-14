@@ -1,14 +1,24 @@
-import React, { useRef, useState } from "react";
-import styles from "../../../styles/authentication/LoginPage.module.css";
+import React, { useContext, useRef, useState } from "react";
+import styles from "../../styles/authentication/LoginPage.module.css";
 import LoginPageNavList from "./LoginPageNavList";
 import { useNavigate } from "react-router-dom";
-import { getEmailRegEx, getPassWordRegEx } from "../../../utils/getRegEx";
+import { getEmailRegEx, getPassWordRegEx } from "../../utils/getRegEx";
 import {
   getEmailErrorMessage,
   getPassWordErrorMessage,
-} from "../../../utils/getErrorMessages";
+} from "../../utils/getErrorMessages";
+import axios from "axios";
+import { getProjectID } from "../../utils/getProjectID";
+import {
+  getErrorToast,
+  getSuccessToast,
+} from "../../utils/getToastNotification";
+import { ToastContainer } from "react-toastify";
+import { AuthContext } from "../../App";
 
 const LoginPage = () => {
+  const { setJwtToken, setUserInfo } = useContext(AuthContext);
+
   const [showPassword, setShowPassword] = useState(true);
   const [eMailErrorMessage, seteMailErrorMessage] = useState("");
   const [passWordErrorMessage, setPassWordErrorMessage] = useState("");
@@ -33,32 +43,35 @@ const LoginPage = () => {
         setPassWordErrorMessage(getPassWordErrorMessage());
       } else {
         setPassWordErrorMessage("");
-        loginApiCall();
-      }
-    }
-
-    const loginApiCall = () => {
-      fetch("https://academics.newtonschool.co/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          projectID: "f104bi07c490",
-        },
-        body: JSON.stringify({
+        const body = {
           email: eMailValue,
           password: passWordValue,
           appType: "linkedin",
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          alert(data.status);
-          console.log(data);
-          localStorage.setItem("JWT", JSON.stringify(data.token));
-        })
-        .catch((err) => console.log(err));
+        };
+        loginApiCall(body);
+      }
     }
   };
+
+  const loginApiCall = (body) =>
+    axios
+      .post("https://academics.newtonschool.co/api/v1/user/login", body, {
+        headers: {
+          "Content-Type": "application/json",
+          projectID: getProjectID(),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        getSuccessToast(res.data.status);
+        setJwtToken(res.data.token);
+        setUserInfo({ ...res.data.data });
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        getErrorToast(err.response.data.message);
+      });
 
   const handlePasswordCheck = (e) => {
     e.preventDefault();
@@ -72,11 +85,12 @@ const LoginPage = () => {
   return (
     <div className={styles.loginPage}>
       <LoginPageNavList />
+      <ToastContainer />
       <div className={styles.loginFormContainer}>
         <h1>Welcome to your professional community</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" ref={eMailRef} />
+          <input type="text" name="email" id="email" ref={eMailRef} required />
           <p className={styles.errorMessage}>{eMailErrorMessage}</p>
           <label htmlFor="passWord">Password</label>
           <section
@@ -88,6 +102,7 @@ const LoginPage = () => {
               name="passWord"
               id="passWord"
               ref={passWordRef}
+              required
             />
             <button onClick={handlePasswordCheck}>
               {showPassword ? "Show" : "Hide"}
@@ -95,9 +110,7 @@ const LoginPage = () => {
           </section>
           <p className={styles.errorMessage}>{passWordErrorMessage}</p>
           <a href="#">Forgot password?</a>
-          <button className={styles.signInButton} onClick={handleSubmit}>
-            Sign in
-          </button>
+          <button className={styles.signInButton}>Sign in</button>
           <section className={styles.or}>
             <span></span>or<span></span>
           </section>

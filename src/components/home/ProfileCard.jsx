@@ -4,10 +4,15 @@ import {
   faSquare,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "../../styles/home/ProfileCard.module.css";
+import { getSkills } from "../../utils/getSkills";
+import { useContext } from "react";
+import { AuthContext } from "../../App";
 
 export const ProfileCard = () => {
+  const skills = getSkills();
+  const {userInfo} = useContext(AuthContext);
   return (
     <div className={styles.profileCard}>
       <img
@@ -16,10 +21,12 @@ export const ProfileCard = () => {
       />
       <FontAwesomeIcon icon={faUser} className={styles.profileCardProfile} />
       <Link className={styles.profileCardName} to={"account"}>
-        Aswath Sethuramalingam
+        {userInfo.name}
       </Link>
       <div className={styles.profileCardSkills}>
-        JAVA | Data Structures | HTML | CSS | Bootstrap | JavaScript | Git
+        {skills.map((skill, i) => (
+          <p key={i}>{skill}</p>
+        ))}
       </div>
       <div className={styles.profileStats}>
         <p>

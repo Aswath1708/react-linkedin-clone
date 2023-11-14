@@ -1,11 +1,18 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet, useNavigate, redirect } from "react-router-dom";
 import { Home } from "../navlinks/Home";
 
 import styles from "../../styles/navbar/NavBar.module.css";
 import NavLinks from "./NavLinks";
 import Logo from "../logo/Logo";
+import { useContext } from "react";
+import { AuthContext } from "../../App";
 
 export const Navbar = () => {
+  const {jwtToken} = useContext(AuthContext);
+  const navigate = useNavigate();
+  if(!jwtToken){
+    navigate("/login");
+  }
   return (
     <>
       <nav className={styles.navBar}>

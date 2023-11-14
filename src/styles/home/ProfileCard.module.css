@@ -1,6 +1,12 @@
+:root{
+  --bg-light-grey:#575c60;
+  --bg-dark-grey:#1b1f23;
+  --font-grey:#ffffff99;
+}
+
 .profileCard {
   width: 15vw;
-  background-color: #1b1f23;
+  background-color: var(--bg-dark-grey);
   border-radius: 0.5rem;
   height: fit-content;
   display: flex;
@@ -18,7 +24,7 @@
 }
 
 .profileCardProfile {
-  border: 2px solid #1b1f23;
+  border: 2px solid var(--bg-dark-grey);
   position: relative;
   bottom: 2rem;
   padding: 0.75rem;
@@ -40,14 +46,16 @@
 }
 
 .profileCardSkills {
-  text-align: center;
-  color: #ffffff99;
+  color: var(--font-grey);
   font-size: 12px;
   font-weight: 400;
-  width: 90%;
-  padding-bottom: 0.5rem;
+  padding: 0 0.5rem 0.5rem;
   position: relative;
   bottom: 0.45rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:1px 5px;
 }
 
 .profileStats {
@@ -61,7 +69,7 @@
 
 .profileStats p {
   font-size: 13px;
-  color: #ffffff99;
+  color: var(--font-grey);
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -69,7 +77,7 @@
 }
 
 .profileStats p:hover {
-  background-color: #575c60;
+  background-color: var(--bg-light-grey);
 }
 
 .profileStats p span {
@@ -77,14 +85,14 @@
 }
 
 .profileCardPremiumLink {
-  color: #ffffff99;
+  color: var(--font-grey);
   font-size: 13px;
   padding: 0.75rem;
   width: 100%;
 }
 
 .profileCardPremiumLink:hover {
-  background-color: #575c60;
+  background-color: var(--bg-light-grey);
 }
 
 .profileCardPremiumLink div {
@@ -111,10 +119,10 @@
 }
 
 .profileCard > div:last-child:hover {
-  background-color: #575c60;
+  background-color: var(--bg-light-grey);
 }
 
 .profileCard > div:last-child svg {
-  color: #ffffff99;
+  color: var(--font-grey);
   margin-right: 10px;
 }

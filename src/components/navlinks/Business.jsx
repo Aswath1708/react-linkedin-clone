@@ -9,9 +9,9 @@ import {
   getArrayOfProducts,
 } from "../../utils/getBusinessLinks";
 
-export const Business = ({ setShowModal }) => {
-  const arrayOfProducts = getArrayOfProducts();
+export const Business = ({setShowModal}) => {
 
+  const arrayOfProducts = getArrayOfProducts();
   const arrayOfOptions = getArrayOfOptions();
 
   return (
@@ -19,7 +19,7 @@ export const Business = ({ setShowModal }) => {
       <div className={styles.businessCardContainer}>
         <header>
           <h2>For Business</h2>
-          <FontAwesomeIcon icon={faXmark} onClick={() => setShowModal(true)} />
+          <FontAwesomeIcon icon={faXmark} onClick={()=>setShowModal(false)}/>
         </header>
         <main>
           <section>

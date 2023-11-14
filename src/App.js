@@ -1,10 +1,10 @@
 import "./styles/App.css";
-import LoginPage from "./components/pages/authentication/LoginPage";
-import SignUp from "./components/pages/authentication/SignUp";
+import LoginPage from "./components/authentication/LoginPage";
+import SignUp from "./components/authentication/SignUp";
 import { Navbar } from "./components/navbar/Navbar";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Me } from "./components/navlinks/Me";
-import PageNotFound from "./components/pages/PageNotFound";
+import PageNotFound from "./components/pagenotfound/PageNotFound";
 import AccountHome from "./components/home/Account/AccountHome";
 import { MyNetwork } from "./components/navlinks/MyNetwork";
 import { Jobs } from "./components/navlinks/Jobs";
@@ -12,10 +12,18 @@ import { Messaging } from "./components/navlinks/Messaging";
 import { Notifications } from "./components/navlinks/Notifications";
 import { Home } from "./components/navlinks/Home";
 import { Premium } from "./components/navlinks/Premium";
-import UserProfile from "./components/pages/userProfile/UserProfile";
+import UserProfile from "./components/userProfile/UserProfile";
+import { createContext, useState } from "react";
+
+export const AuthContext = createContext();
 
 function App() {
+
+  const [jwtToken,setJwtToken] = useState("");
+  const [userInfo,setUserInfo] = useState({});
+
   return (
+    <AuthContext.Provider value={{jwtToken,setJwtToken,userInfo,setUserInfo}}>
     <div className="App">
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
@@ -36,6 +44,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
+    </AuthContext.Provider>
   );
 }
 

@@ -1,3 +1,7 @@
+:root{
+  --border-grey:#ffffff18;
+}
+
 .businessModal {
   background-color: rgba(0, 0, 0, 0.718);
   width: 100vw;
@@ -16,7 +20,7 @@
   width: fit-content;
   padding: 1rem 1.5rem 2rem;
   border-radius: 0.5rem 0 0 0.5rem; 
-  border: 1px solid #ffffff18;
+  border: 1px solid var(--border-grey);
   animation: modalMovement 0.3s ease-out 1;
   > header {
     display: flex;
@@ -38,13 +42,13 @@
     flex-direction: column;
     gap: 0.65rem;
     > section {
-      border: 1px solid #ffffff18;
+      border: 1px solid var(--border-grey);
       border-radius: 0.5rem;
       > h3 {
         font-size: 16px;
         font-weight: 600;
         padding: 1.25rem;
-        border-bottom: 1px solid #ffffff18;
+        border-bottom: 1px solid var(--border-grey);
         color: #fff;
       }
     }
@@ -62,7 +66,7 @@
     width: 3.5rem;
     > svg {
       height: 1.5rem;
-      border: 1px solid #ffffff18;
+      border: 1px solid var(--border-grey);
       padding: 5px;
       border-radius: 0.25rem;
       color: #fff;

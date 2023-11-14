@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styles from "../../../styles/home/UserProfile.module.css";
+import styles from "../../styles/home/UserProfile.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useParams } from "react-router-dom";
 

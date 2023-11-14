@@ -18,7 +18,6 @@ export const getNavLinks = () => {
     { link: "/home/jobs", icon: faBriefcase, text: "Jobs" },
     { link: "/home/messages", icon: faMessage, text: "Messaging" },
     { link: "/home/notifications", icon: faBell, text: "Notifications" },
-    { link: "/login", icon: faUser, text: "Me", dropdown: faCaretDown },
   ];
 };
 
