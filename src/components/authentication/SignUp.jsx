@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../../styles/authentication/SignUpPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -18,13 +18,23 @@ import {
 import {
   getSuccessToast,
   getErrorToast,
+  getWarningToast,
 } from "../../utils/getToastNotification";
 import axios from "axios";
 import { getProjectID } from "../../utils/getProjectID";
 import { ToastContainer } from "react-toastify";
+import { AuthContext } from "../../App";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { jwtToken } = useContext(AuthContext);
+  const handleLogoClick = () => {
+    if (jwtToken) {
+      navigate("/home");
+    } else {
+      getWarningToast("Please Login First!");
+    }
+  };
 
   const [userNameErrorMessage, setUserNameErrorMessage] = useState("");
   const [eMailErrorMessage, seteMailErrorMessage] = useState("");
@@ -94,12 +104,12 @@ const SignUp = () => {
   return (
     <div className={styles.signUpPage}>
       <div className={styles.headerContainer}>
-        <h1 onClick={() => navigate("/home")}>
+        <h1 onClick={handleLogoClick}>
           Linked
           <FontAwesomeIcon icon={faLinkedin} />
         </h1>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
       <div className={styles.signUpFormContainer}>
         <h1>Join LinkedIn to find the right job</h1>
         <form onSubmit={handleSubmit}>
