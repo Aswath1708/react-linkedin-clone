@@ -1,0 +1,34 @@
+:root{
+  --color-grey:#ffffffe6;
+  --search-bg-grey:#38434f;
+}
+
+.searchBarContainer{
+  flex: 1;
+  display: flex;
+  >button{
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-radius: 0.25rem 0 0 0.25rem;
+    border: none;
+    background-color: var(--search-bg-grey);
+    color: var(--color-grey);
+  }
+}
+
+.search {
+    padding: 0.65rem 0;
+    width: 55%;
+    border: none;
+    border-radius: 0 0.25rem 0.25rem 0;
+    background-color: var(--search-bg-grey);
+    color: var(--color-grey);
+    transition: 0.4s;
+    &:focus {
+      width: 80%;
+      outline: none;
+    }
+    &::placeholder {
+      color: var(--color-grey);
+      font-family: inherit;
+    }
+  }

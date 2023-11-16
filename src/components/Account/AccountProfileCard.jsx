@@ -2,39 +2,38 @@ import React, { useContext } from "react";
 import { getSkills } from "../../utils/getSkills";
 import styles from "../../styles/accountprofile/AccountProfileCard.module.css";
 import ProfilePicture from "./ProfilePicture";
+import { getLoggedUserProfileData } from "../../utils/getProfileData";
 
 const AccountProfileCard = () => {
-  const skills = getSkills();
+  const { skills, address, followers, connections, collegeLogo, collegeName } =
+    getLoggedUserProfileData();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   return (
     <div className={styles.accountProfileCard}>
       <div className={styles.profilePicContainer}>
-        <ProfilePicture/>
+        <ProfilePicture />
       </div>
       <div className={styles.personalInformationContainer}>
         <div>
-          <h2 className={styles.name}>{userInfo&&userInfo.name}</h2>
+          <h2>{userInfo && userInfo.name}</h2>
           <div className={styles.skills}>
             {skills.map((skill, i) => (
               <p key={i}>{skill}</p>
             ))}
           </div>
           <p className={styles.address}>
-            Thanjavur, Tamil Nadu, India .
-            <span className={styles.contactInfo}>Contact info</span>
+            {address}
+            <span>Contact info</span>
           </p>
           <div className={styles.followersAndConnections}>
-            <p>76 followers</p>.<p>59 connections</p>
+            <p>{followers} followers</p>.<p>{connections} connections</p>
           </div>
         </div>
         <div className={styles.collegeContainer}>
-          <div className={styles.imageContainer}>
-            <img
-              src="https://media.licdn.com/dms/image/C560BAQE0PmVgJqVLTA/company-logo_100_100/0/1616863616991?e=1705536000&v=beta&t=vuTls7gORn4jUCOMQV0RHeWEAmYwLWPb7gE2fcdA1Pg"
-              alt="college-logo-img"
-            />
+          <div>
+            <img src={collegeLogo} alt="college-logo-img" />
           </div>
-          <p>THANTHAI PERIYAR GOVERNMENT INSTITUTE OF TECHNOLOGY</p>
+          <p>{collegeName}</p>
         </div>
       </div>
       <div className={styles.buttonsContainer}>

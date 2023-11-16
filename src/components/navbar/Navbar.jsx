@@ -1,9 +1,10 @@
-import { Routes, Route, Outlet, useNavigate, redirect } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import { Home } from "../navlinks/Home";
 
 import styles from "../../styles/navbar/NavBar.module.css";
 import NavLinks from "./NavLinks";
 import Logo from "../logo/Logo";
+import SearchBar from "./SearchBar";
 
 export const Navbar = () => {
   return (
@@ -11,14 +12,7 @@ export const Navbar = () => {
       <nav className={styles.navBar}>
         <div className={styles.logoSearchBar}>
           <Logo />
-          <input
-            type="text"
-            name="search"
-            id="search"
-            className={styles.search}
-            placeholder="Search"
-            autoComplete="off"
-          />
+          <SearchBar />
         </div>
         <NavLinks />
       </nav>

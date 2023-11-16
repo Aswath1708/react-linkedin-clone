@@ -1,6 +1,4 @@
-:root{
-  --color-grey:#ffffffe6;
-}
+
 
 .navBar {
     display: flex;
@@ -8,8 +6,12 @@
     justify-content: space-between;
     align-items: center;
     font-size: 0.75rem;
-    margin-bottom: 1.5rem;
     padding: 0 10%;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    border-bottom: 1px solid #ffffff35;
   }
   .logoSearchBar {
     display: flex;
@@ -20,23 +22,7 @@
       cursor: pointer;
     }
   }
-  .search {
-    padding: 0.65rem;
-    padding-left: 0.75rem;
-    width: 55%;
-    border: none;
-    border-radius: 0.25rem;
-    background-color: #38434f;
-    color: var(--color-grey);
-    transition: 0.4s;
-    &:focus {
-      width: 80%;
-    }
-    &::placeholder {
-      color: var(--color-grey);
-      font-family: inherit;
-    }
-  }
+
   
 
   

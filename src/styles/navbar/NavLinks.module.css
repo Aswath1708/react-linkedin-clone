@@ -1,6 +1,7 @@
-:root {
-  --color-grey: #ffffff99;
+:root{
+  --nav-link-gray:#ffffff99;
 }
+
 
 .navLinks {
   display: flex;
@@ -13,9 +14,8 @@
     > li {
       > a,.profileLink {
         text-decoration: none;
-        color: var(--color-grey);
+        color: var(--nav-link-gray);
         padding: 0.5rem 0.75rem;
-        padding-bottom: 0.25rem;
         display: flex;
         flex-direction: column;
         align-items: center;

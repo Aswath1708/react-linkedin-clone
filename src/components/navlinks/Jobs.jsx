@@ -9,7 +9,7 @@ export const Jobs = () => {
     gap:"1.5rem",
     alignItems:"start",
     justifyContent:"center",
-    margin:"0 10%"
+    margin:"5rem 10% 0"
   }}>
     <Options/>
     <div style={{display:"flex",flexDirection:"column",gap:"1.5rem"}}>

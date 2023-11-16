@@ -1,6 +1,7 @@
-:root{
-    --bg-blue: #039de5;
-    --border-grey:#1b1f23;
+:root {
+  --bg-blue: #039de5;
+  --border-grey: #1b1f23;
+  --font-light: #ffffff99;
 }
 
 .accountProfileCard {
@@ -14,7 +15,7 @@
 }
 
 .profilePicContainer {
-  background: url("https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537_1280.jpg");
+  background: url("../../assets/coverPicture/LinkedIn-Default-Background.png");
   background-position: top;
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -22,7 +23,7 @@
   height: 25vh;
   border-radius: 0.5rem 0.5rem 0 0;
   margin-bottom: 4rem;
-  >div{
+  > div {
     position: relative;
     top: 4rem;
     width: 10rem;
@@ -42,12 +43,15 @@
     gap: 10px;
     flex-direction: column;
     flex: 3;
+    >h2{
+      font-weight: 600;
+    }
   }
   .collegeContainer {
     display: flex;
     flex-direction: row;
     flex: 1;
-    > .imageContainer {
+    > div {
       width: 4.5rem;
       > img {
         width: 100%;
@@ -60,17 +64,16 @@
   }
 }
 
-.name {
-  font-weight: 600;
-}
-
 .address {
-  color: #ffffff99;
+  color: var(--font-light);
   font-weight: 400;
   font-size: 14px;
+  > span {
+    color: var(--bg-blue);
+    font-weight: 600;
+  }
 }
 
-.contactInfo,
 .followersAndConnections {
   color: var(--bg-blue);
   font-weight: 600;
@@ -80,6 +83,12 @@
   display: flex;
   gap: 5px;
   font-size: 14px;
+}
+
+.skills {
+  display: flex;
+  gap: 5px;
+  color: var(--font-light);
 }
 
 .buttonsContainer {
@@ -104,7 +113,7 @@
     }
     &:nth-child(2) {
       border: 2px solid var(--bg-blue);
-      color:var(--bg-blue);
+      color: var(--bg-blue);
       background-color: transparent;
     }
   }

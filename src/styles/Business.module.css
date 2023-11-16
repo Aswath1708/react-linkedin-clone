@@ -1,6 +1,8 @@
 :root{
   --border-grey:#ffffff18;
+  --font-light:#ffffff99;
 }
+
 
 .businessModal {
   background-color: rgba(0, 0, 0, 0.718);
@@ -72,7 +74,7 @@
       color: #fff;
     }
     > p {
-      color: #ffffff99;
+      color: var(--font-light);
       font-size: 12px;
       text-align: center;
     }
@@ -88,7 +90,7 @@
     margin: 0.5rem 1rem 0.75rem;
     color: #fff;
     > span {
-      color: #ffffff99;
+      color: var(--font-light);
       font-size: 12px;
       font-weight: 400;
     }

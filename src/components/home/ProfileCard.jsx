@@ -1,27 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBookmark,
-  faSquare,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBookmark, faSquare } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import styles from "../../styles/home/ProfileCard.module.css";
 import { getSkills } from "../../utils/getSkills";
 import ProfilePicture from "../Account/ProfilePicture";
+import CoverPicture from "../Account/CoverPicture";
 
 export const ProfileCard = () => {
   const skills = getSkills();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   return (
     <div className={styles.profileCard}>
-      <img
-        src="https://www.westend61.de/images/0001396976pw/high-angle-view-of-coffee-cup-with-laptop-on-white-background-EYF05772.jpg"
-        alt="cover-image"
-      />
+      <CoverPicture />
       <div className={styles.profileContainer}>
-      <ProfilePicture/>
+        <ProfilePicture />
       </div>
       <Link className={styles.profileCardName} to={"account"}>
-        {userInfo&&userInfo.name}
+        {userInfo && userInfo.name}
       </Link>
       <div className={styles.profileCardSkills}>
         {skills.map((skill, i) => (

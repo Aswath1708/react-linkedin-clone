@@ -44,7 +44,7 @@ export const Post = ({
       <img src={image} alt="content-image" className="content-image" />
       <div className="content-below-post">
         <div className="likes-comments-count">
-          <div>{likeCount} likes</div>
+          <div>{isLiked?likeCount+1:likeCount} likes</div>
           <div>{commentCount} comments</div>
         </div>
         <div className="reaction-buttons">

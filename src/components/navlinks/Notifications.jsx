@@ -11,7 +11,7 @@ export const Notifications = () => {
         display: "flex",
         justifyContent: "center",
         gap: "1.25pc",
-        margin: "0 10%",
+        margin: "5rem 10% 0",
       }}
     >
       <ViewSettings />
