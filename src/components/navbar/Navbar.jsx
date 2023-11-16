@@ -4,18 +4,8 @@ import { Home } from "../navlinks/Home";
 import styles from "../../styles/navbar/NavBar.module.css";
 import NavLinks from "./NavLinks";
 import Logo from "../logo/Logo";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../../App";
 
 export const Navbar = () => {
-  const { jwtToken } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!jwtToken) {
-      navigate("/login");
-    }
-  }, [jwtToken]);
   return (
     <>
       <nav className={styles.navBar}>

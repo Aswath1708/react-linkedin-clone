@@ -2,26 +2,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
   faSquare,
-  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import styles from "../../styles/home/ProfileCard.module.css";
 import { getSkills } from "../../utils/getSkills";
-import { useContext } from "react";
-import { AuthContext } from "../../App";
+import ProfilePicture from "../Account/ProfilePicture";
 
 export const ProfileCard = () => {
   const skills = getSkills();
-  const {userInfo} = useContext(AuthContext);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   return (
     <div className={styles.profileCard}>
       <img
         src="https://www.westend61.de/images/0001396976pw/high-angle-view-of-coffee-cup-with-laptop-on-white-background-EYF05772.jpg"
         alt="cover-image"
       />
-      <FontAwesomeIcon icon={faUser} className={styles.profileCardProfile} />
+      <div className={styles.profileContainer}>
+      <ProfilePicture/>
+      </div>
       <Link className={styles.profileCardName} to={"account"}>
-        {userInfo.name}
+        {userInfo&&userInfo.name}
       </Link>
       <div className={styles.profileCardSkills}>
         {skills.map((skill, i) => (

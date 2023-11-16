@@ -1,20 +1,19 @@
-import React from "react";
-import { getSkills } from "../../../utils/getSkills";
-import styles from "../../../styles/accountprofile/AccountProfileCard.module.css";
+import React, { useContext } from "react";
+import { getSkills } from "../../utils/getSkills";
+import styles from "../../styles/accountprofile/AccountProfileCard.module.css";
+import ProfilePicture from "./ProfilePicture";
 
 const AccountProfileCard = () => {
   const skills = getSkills();
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   return (
     <div className={styles.accountProfileCard}>
       <div className={styles.profilePicContainer}>
-        <img
-          src="https://media.licdn.com/dms/image/D5603AQGD4oDqrW0sWg/profile-displayphoto-shrink_400_400/0/1673551963869?e=1701907200&v=beta&t=6b8HAUY-s3JeYOinMYPTBOi5rY8N1_rY46SS3M00U2c"
-          alt="profile-image"
-        />
+        <ProfilePicture/>
       </div>
       <div className={styles.personalInformationContainer}>
         <div>
-          <h2 className={styles.name}>Aswath Sethuramalingam</h2>
+          <h2 className={styles.name}>{userInfo&&userInfo.name}</h2>
           <div className={styles.skills}>
             {skills.map((skill, i) => (
               <p key={i}>{skill}</p>

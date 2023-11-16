@@ -9,6 +9,7 @@ import { getNavLinks } from "../../utils/getNavLinks";
 import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
 import { ReactComponent as BusinessLink } from "../../assets/businessLink/BusinessLink.svg";
 import DropDown from "./DropDown";
+import ProfilePicture from "../Account/ProfilePicture";
 
 const NavLinks = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,6 +19,7 @@ const NavLinks = () => {
 
   const handleClick = () =>{
     setShowModal(true);
+    // document.querySelector("#business-modal").style.display="flex";
   }
 
   return (
@@ -39,11 +41,11 @@ const NavLinks = () => {
           );
         })}
         <li>
-          <div className={styles.profileLink} onClick={()=>setShowDropDown(true)}>
-            <FontAwesomeIcon icon={faUser} style={{height:"20px",width:"20px"}}/>
+          <div className={styles.profileLink} onClick={()=>setShowDropDown(!showDropDown)}>
+            <ProfilePicture/>
             <p>
               Me<FontAwesomeIcon icon={faCaretDown}/>
-              {showDropDown&&<DropDown/>}
+              {showDropDown&&<DropDown setShowDropDown={setShowDropDown}/>}
             </p>
           </div>
         </li>
@@ -54,7 +56,8 @@ const NavLinks = () => {
           <div>
             For Business <FontAwesomeIcon icon={faCaretDown} />
           </div>
-          {showModal && <Business setShowModal={setShowModal} />}
+          {showModal && <Business setShowModal={setShowModal} showModal={showModal}/>}
+          {/* <Business/> */}
         </div>
 
         <Link to="/premium">Try premium for free</Link>

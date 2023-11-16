@@ -1,8 +1,8 @@
 .underConstructionPage{
-    background-image: url('../assets/underConstruction/UnderConstruction.png');
-   height: 89.5vh;
+    background-image: url('../assets/pageNotFound/page-not-found.svg');
+    height: 89vh;
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }

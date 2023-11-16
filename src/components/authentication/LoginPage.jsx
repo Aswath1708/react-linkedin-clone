@@ -11,7 +11,6 @@ import axios from "axios";
 import { getProjectID } from "../../utils/getProjectID";
 import {
   getErrorToast,
-  getSuccessToast,
 } from "../../utils/getToastNotification";
 import { ToastContainer } from "react-toastify";
 import { AuthContext } from "../../App";
@@ -63,9 +62,10 @@ const LoginPage = () => {
       })
       .then((res) => {
         console.log(res.data);
-        getSuccessToast(res.data.status);
+        localStorage.setItem("jwtToken",JSON.stringify(res.data.token));
         setJwtToken(res.data.token);
         setUserInfo({ ...res.data.data });
+        localStorage.setItem("userInfo",JSON.stringify(res.data.data));
         navigate("/");
       })
       .catch((err) => {

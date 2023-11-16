@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faImage, faNewspaper } from "@fortawesome/free-regular-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
-import styles from "../../styles/NewPost.module.css";
+import styles from "../../styles/home/NewPost.module.css";
+import ProfilePicture from "../Account/ProfilePicture";
 
 export const Newpost = () => {
   return (
     <div className={styles.newPost}>
       <div className={styles.newPostInput}>
-        <FontAwesomeIcon icon={faUser} className={styles.newPostProfile} />
+        <ProfilePicture/>
         <input
           type="text"
           name="newpost"

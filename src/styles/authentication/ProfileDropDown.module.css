@@ -1,7 +1,29 @@
-.dropDownContainer{
-    background-color:#333;
-    display:flex;
-    flex-direction:column;
-    border:1px solid #fff;
-    position:absolute;
+.dropDownContainer {
+  background-color: #1b1f23;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  position: fixed;
+  border-radius: 0.25rem;
+  top:4rem;
+  > p,
+  > a {
+    color: #fff;
+    padding: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  > a:hover {
+    background-color: #575c60;
+    color:#039de5;
+  }
+  > p {
+    color: #ffffff99;
+  }
+  >p:hover{
+    color: rgb(255, 73, 73);
+  }
 }

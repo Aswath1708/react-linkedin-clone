@@ -5,7 +5,7 @@ import { Navbar } from "./components/navbar/Navbar";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Me } from "./components/navlinks/Me";
 import PageNotFound from "./components/pagenotfound/PageNotFound";
-import AccountHome from "./components/home/Account/AccountHome";
+import AccountHome from "./components/Account/AccountHome";
 import { MyNetwork } from "./components/navlinks/MyNetwork";
 import { Jobs } from "./components/navlinks/Jobs";
 import { Messaging } from "./components/navlinks/Messaging";

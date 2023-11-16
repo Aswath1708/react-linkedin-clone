@@ -1,45 +1,44 @@
 import React, { useEffect } from "react";
-import styles from "../../styles/home/UserProfile.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "../../styles/accountprofile/AccountProfileCard.module.css";
 import { useParams } from "react-router-dom";
+import ProfilePicture from "../Account/ProfilePicture";
+import axios from "axios";
+import { getProjectID } from "../../utils/getProjectID";
+import { getSkills } from "../../utils/getSkills";
 
 const UserProfile = () => {
   const { id } = useParams();
-
-  const token = JSON.parse(localStorage.getItem("JWT"));
+  const token = JSON.parse(localStorage.getItem("jwtToken"));
+  const skills = getSkills();
   console.log(token);
 
   useEffect(() => {
-    fetch(`https://academics.newtonschool.co/api/v1/linkedin/user/${id}`, {
+    axios.get(`https://academics.newtonschool.co/api/v1/linkedin/user/${id}`, {
       headers: {
-        Authorization: token,
-        projectID: "f104bi07c490",
+        Authorization:`Bearer ${token}`,
+        projectID: `${getProjectID()}`,
       },
-    })
-      .then((res) => res.json)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+    }).then((res)=>console.log(res.data)).catch(err=>console.log(err))
   }, []);
 
   return (
-    <div className="account-profile-card">
-      <div className="cover-pic-container">
+    <div className={styles.accountProfileCard}>
+      <div className={styles.coverPicContainer}>
         <img
           src="https://media.licdn.com/dms/image/D5616AQGOx345bn0xdA/profile-displaybackgroundimage-shrink_350_1400/0/1673551876072?e=1701907200&v=beta&t=ybvDrT22ExMTyU8cez-bDnIeFdpxw4uU6ytbwQvjV5k"
           alt="cover-image"
         />
       </div>
-      <div className="profile-pic-container">
-        <img
-          src="https://media.licdn.com/dms/image/D5603AQGD4oDqrW0sWg/profile-displayphoto-shrink_400_400/0/1673551963869?e=1701907200&v=beta&t=6b8HAUY-s3JeYOinMYPTBOi5rY8N1_rY46SS3M00U2c"
-          alt="profile-image"
-        />
+      <div className={styles.profilePicContainer}>
+        <ProfilePicture />
       </div>
-      <div className="personal-information-container">
+      <div className={styles.personalInformationContainer}>
         <div>
           <h2 className="name">{id}</h2>
           <p className="skills">
-            JAVA | Data Structures | HTML | CSS | Bootstrap | JavaScript | Git
+            {skills.map((skill, i) => (
+              <p key={i}>{skill}</p>
+            ))}
           </p>
           <p className="address">
             Thanjavur, Tamil Nadu, India .
