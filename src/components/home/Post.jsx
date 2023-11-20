@@ -6,67 +6,68 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { ReactComponent as SolidLikeBtn } from "../../assets/likeButton/SolidLikeBtn.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "../../styles/home/PostCard.module.css";
+import {AuthContext} from '../../App'
 
-export const Post = ({
-  data: {
+export const Post = (props) => {
+
+  const {darkTheme} = useContext(AuthContext);
+
+  const {
     _id,
     author: { name, profileImage },
     channel: { name: profession, image },
     commentCount,
     likeCount,
     content,
-    title,
-  },
-}) => {
+  } = props;
   const [isLiked, setIsLiked] = useState(false);
+  // useEffect(()=>{
+  localStorage.setItem("followerInfo", JSON.stringify(props));
+  // },[_id])
+
   return (
-    <div className="post-card">
-      <div className="profile-details">
+    <div className={styles.postCard} style={{backgroundColor:darkTheme?"#1b1f23":"#fff"}}>
+      <div className={styles.profileDetails}>
         <div>
-          <img
-            src={profileImage}
-            alt="profile-image"
-            className="profile-image"
-          />
+          <img src={profileImage} alt="profile-image" />
           <div>
-            <Link className="profile-card-userName" to={`/home/in/${_id}`}>
-              {name}
-            </Link>
-            <p>{profession}</p>
+            <Link to={`/home/in/${_id}`} style={{color:darkTheme?"#ddd":"#333"}}>{name}</Link>
+            <p style={{color:darkTheme?"#ffffff99":"#000000"}}>{profession}</p>
           </div>
         </div>
-        <FontAwesomeIcon icon={faEllipsis} />
+        <FontAwesomeIcon icon={faEllipsis} style={{color:darkTheme?"#ddd":"#333"}}/>
       </div>
 
-      <p className="post-content">{content}</p>
-      <img src={image} alt="content-image" className="content-image" />
-      <div className="content-below-post">
-        <div className="likes-comments-count">
-          <div>{isLiked?likeCount+1:likeCount} likes</div>
+      <p style={{color:darkTheme?"#ffffff99":"#000000"}}>{content}</p>
+      <img src={image} alt="content-image" />
+      <div>
+        <div className={styles.likesCommentsCount}>
+          <div>{isLiked ? likeCount + 1 : likeCount} likes</div>
           <div>{commentCount} comments</div>
         </div>
-        <div className="reaction-buttons">
+        <div className={styles.reactionButtons}>
           <div onClick={() => setIsLiked(!isLiked)}>
             {isLiked ? (
-              <SolidLikeBtn className="solid-like-btn" />
+              <SolidLikeBtn className={styles.solidLikeBtn} />
             ) : (
               <FontAwesomeIcon icon={faThumbsUp} flip="horizontal" />
             )}
-            Like
+            <span>Like</span>
           </div>
           <div>
             <FontAwesomeIcon icon={faCommentDots} />
-            Comment
+            <span>Comment</span>
           </div>
           <div>
             <FontAwesomeIcon icon={faRepeat} />
-            Repost
+            <span>Repost</span>
           </div>
           <div>
             <FontAwesomeIcon icon={faPaperPlane} />
-            Send
+            <span>Send</span>
           </div>
         </div>
       </div>

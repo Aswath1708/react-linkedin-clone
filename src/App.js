@@ -14,6 +14,7 @@ import { Home } from "./components/navlinks/Home";
 import { Premium } from "./components/navlinks/Premium";
 import UserProfile from "./components/userProfile/UserProfile";
 import { createContext, useState } from "react";
+import SearchResults from "./components/search/SearchResults";
 
 export const AuthContext = createContext();
 
@@ -21,9 +22,12 @@ function App() {
 
   const [jwtToken,setJwtToken] = useState("");
   const [userInfo,setUserInfo] = useState({});
+  const [darkTheme,setDarkTheme] = useState(true);
+
+  document.body.style.backgroundColor = darkTheme?"#000":"#ddd";
 
   return (
-    <AuthContext.Provider value={{jwtToken,setJwtToken,userInfo,setUserInfo}}>
+    <AuthContext.Provider value={{jwtToken,setJwtToken,userInfo,setUserInfo,darkTheme,setDarkTheme}}>
     <div className="App">
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
@@ -37,6 +41,7 @@ function App() {
           <Route path="account" element={<AccountHome />} />
           <Route path="feed/account" element={<AccountHome />} />
           <Route path="in/:id" element={<UserProfile />} />
+          <Route path="search/:searchterm" element={<SearchResults/>}/>
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUp />} />

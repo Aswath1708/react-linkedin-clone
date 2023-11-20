@@ -1,44 +1,53 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage, faNewspaper } from "@fortawesome/free-regular-svg-icons";
-import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../styles/home/NewPost.module.css";
 import ProfilePicture from "../Account/ProfilePicture";
+import { useContext } from "react";
+import { AuthContext } from "../../App";
+import { getNewPostOptions } from "../../utils/getNewPostOptions";
 
 export const Newpost = () => {
+  const { darkTheme } = useContext(AuthContext);
+  const newPostOptions = getNewPostOptions();
+  const mouseOver = (e) =>
+    (e.target.style.backgroundColor = darkTheme ? "#575c60" : "#ddd");
+  const moustOut = (e) => (e.target.style.backgroundColor = "transparent");
   return (
-    <div className={styles.newPost}>
+    <div
+      className={styles.newPost}
+      style={{ backgroundColor: darkTheme ? "#1b1f23" : "#fff" }}
+    >
       <div className={styles.newPostInput}>
-        <ProfilePicture/>
+        <ProfilePicture />
         <input
           type="text"
           name="newpost"
           id="newpost"
           placeholder="Start a post"
+          style={{
+            border: `1px solid ${darkTheme ? "#ffffff80" : "#00000080"}`,
+          }}
+          onMouseOver={mouseOver}
+          onMouseOut={moustOut}
         />
       </div>
       <div className={styles.newPostOptions}>
-        <div>
-          <FontAwesomeIcon
-            icon={faImage}
-            flip="horizontal"
-            style={{ color: "#70b5f9", fontSize: "1.25rem" }}
-          />
-          Media
-        </div>
-        <div>
-          <FontAwesomeIcon
-            icon={faCalendarDays}
-            style={{ color: "#e7a33e", fontSize: "1.25rem" }}
-          />
-          Event
-        </div>
-        <div>
-          <FontAwesomeIcon
-            icon={faNewspaper}
-            style={{ color: "#f5987e", fontSize: "1.25rem" }}
-          />
-          Write articale
-        </div>
+        {newPostOptions.map(({ icon, flip, color, text }, i) => {
+          return (
+            <div
+              key={i}
+              style={{ color: darkTheme ? "#ffffff99" : "#00000099" }}
+              onMouseOver={mouseOver}
+              onMouseOut={moustOut}
+            >
+              <FontAwesomeIcon
+                icon={icon}
+                flip={flip}
+                style={{ color: color, fontSize: "1.25rem" }}
+              />
+              {text}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

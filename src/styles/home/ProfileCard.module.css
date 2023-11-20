@@ -5,7 +5,6 @@
 }
 
 .profileCard {
-  width: 15vw;
   background-color: var(--bg-dark-grey);
   border-radius: 0.5rem;
   height: fit-content;
@@ -129,4 +128,21 @@
 .profileCard > div:last-child svg {
   color: var(--font-grey);
   margin-right: 10px;
+}
+
+@media screen and (width<=600px){
+  .profileStats,.profileCardPremiumLink,.profileCard>div:last-child{
+    display: none;
+  }
+  .profileContainer{
+    >div{
+      width: 10%;
+    }
+  }
+}
+
+@media screen and (width<=450px){
+  .profileCard,.profileCard>img{
+    border-radius: 0;
+  }
 }

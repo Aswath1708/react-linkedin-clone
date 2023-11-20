@@ -25,193 +25,13 @@ a {
   text-decoration: none;
 }
 
-.home {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 5rem;
-}
 
-.home > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.sort-by {
-  margin: 1rem 0;
-  width: 40vw;
-  background-color: #3d3d3d;
-  height: 1px;
-}
 
 .posts-container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-.post-card {
-  width: 40vw;
-  background-color: #1b1f23;
-  border-radius: 0.5rem;
-}
-
-.profile-details {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem;
-}
-
-.profile-details > div {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.profile-details div div {
-  display: flex;
-  flex-direction: column;
-}
-
-.profile-details svg {
-  font-size: larger;
-  align-self: start;
-  padding: 0.5rem 0.55rem;
-  border-radius: 50%;
-}
-
-.profile-details svg:hover {
-  background-color: #575c60;
-}
-
-.profile-card-userName {
-  font-weight: 500;
-  color: #ddd;
-  &:hover {
-    color: #039de5;
-    text-decoration: underline;
-  }
-}
-
-.profile-details div p:nth-child(2) {
-  color: #ffffff99;
-  font-size: small;
-}
-
-.post-content {
-  padding: 0.75rem;
-  font-size: 0.9rem;
-  padding-top: 0;
-}
-
-.content-image {
-  width: 100%;
-}
-.profile-image {
-  width: 3.5rem;
-  border-radius: 50%;
-}
-
-.likes-comments-count {
-  display: flex;
-  justify-content: space-between;
-  color: #ffffff99;
-  padding-top: 0.25rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 0.01rem solid #3d3d3d;
-  font-size: 0.75rem;
-  margin: 0 1rem;
-}
-
-.reaction-buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  font-weight: 600;
-  justify-items: stretch;
-  padding: 0.25rem 1rem;
-}
-
-.reaction-buttons div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.25rem;
-}
-
-.reaction-buttons div:hover {
-  background-color: #575c60;
-  cursor: pointer;
-}
-
-.reaction-buttons svg {
-  font-size: 1.5rem;
-  padding: 0.5rem;
-  -webkit-transform: none;
-  transform: none;
-}
-
-.solid-like-btn {
-  fill: #fff;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  height: 1.65em;
-  fill: #039de5;
-  /* filter: drop-shadow(3px 5px 2px rgba(10, 157, 255, 0.4)); */
-}
-
-
-.discover-more {
-  background-color: #1b1f23;
-  border-radius: 0.5rem;
-  margin-top: 0.4rem;
-  width: 15vw;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding-top: 0.9rem;
-}
-
-.discover-more p {
-  color: #70b5f9;
-  font-weight: 600;
-  font-size: 13px;
-  margin-left: 0.75rem;
-  cursor: pointer;
-}
-
-.discover-more p:hover {
-  text-decoration: underline;
-}
-
-.discover-more section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.discover-more section span {
-  color: #ddd;
-  font-size: 24px;
-  margin-right: 0.5rem;
-}
-
-.discover-more > div {
-  padding: 0.75rem 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  font-size: 14px;
-  border-top: 1px solid #3d3d3d;
-  border-radius: 0 0 0.5rem 0.5rem;
-}
-
-.discover-more > div:hover {
-  background-color: #575c60;
-}
-
 
 
 .account-home {
@@ -222,7 +42,6 @@ a {
   gap: 10px;
   margin-top: 5rem;
 }
-
 
 .analytics-container {
   display: flex;

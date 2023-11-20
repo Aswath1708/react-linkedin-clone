@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "../../styles/home/DiscoverMore.module.css";
 
 const DiscoverMore = () => {
   return (
-    <div className="discover-more">
+    <div className={styles.discoverMore}>
       <p>Groups</p>
       <section>
         <p>Events</p>

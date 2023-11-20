@@ -6,17 +6,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../styles/jobs/SearchFilter.module.css";
 import React from "react";
+import { getArrayOfSuggestions } from "../../utils/getArrayOfSearchFilterSuggestions";
 
 const SearchFilter = () => {
-  const arrayOfSuggestions = [
-    "remote",
-    "marketing manager",
-    "hr",
-    "legal",
-    "sales",
-    "amazon",
-    "google",
-  ];
+  const arrayOfSuggestions = getArrayOfSuggestions();
 
   return (
     <div className={styles.searchFilterContainer}>
@@ -33,7 +26,7 @@ const SearchFilter = () => {
       <main>
         {arrayOfSuggestions.map((data, i) => {
           return (
-            <button>
+            <button key={i}>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
               {data}
             </button>

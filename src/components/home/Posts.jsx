@@ -31,7 +31,7 @@ export const Posts = () => {
     <div className="posts-container">
       {!loadingState ? (
         posts.map((data, i) => {
-          return <Post key={i} data={data} />;
+          return <Post key={i} {...data} />;
         })
       ) : (
         <Loader />
