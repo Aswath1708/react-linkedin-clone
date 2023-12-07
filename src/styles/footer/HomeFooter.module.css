@@ -9,7 +9,7 @@
   flex-wrap: wrap;
   justify-content: center;
   > p {
-    color: #ffffff99;
+    /* color: #ffffff99; */
     font-weight: 400;
     font-size: 12px;
   }

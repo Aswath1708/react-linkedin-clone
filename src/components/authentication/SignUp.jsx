@@ -9,19 +9,19 @@ import {
   getEmailRegEx,
   getPassWordRegEx,
   getUserNameRegEx,
-} from "../../utils/getRegEx";
+} from "../../utils/authentication/getRegEx";
 import {
   getEmailErrorMessage,
   getPassWordErrorMessage,
   getUserNameErrorMessage,
-} from "../../utils/getErrorMessages";
+} from "../../utils/authentication/getErrorMessages";
 import {
   getSuccessToast,
   getErrorToast,
   getWarningToast,
-} from "../../utils/getToastNotification";
+} from "../../utils/authentication/getToastNotification";
 import axios from "axios";
-import { getProjectID } from "../../utils/getProjectID";
+import { getProjectID } from "../../utils/authentication/getProjectID";
 import { ToastContainer } from "react-toastify";
 import { AuthContext } from "../../App";
 

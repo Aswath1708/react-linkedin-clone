@@ -1,27 +1,65 @@
-import React, { useContext } from "react";
-import { getSkills } from "../../utils/getSkills";
+import React, { useContext, useState } from "react";
 import styles from "../../styles/accountprofile/AccountProfileCard.module.css";
 import ProfilePicture from "./ProfilePicture";
 import { getLoggedUserProfileData } from "../../utils/getProfileData";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import blankProfile from "../../assets/profilePicture/blank-profile-picture.webp";
+import { AuthContext } from "../../App";
 
 const AccountProfileCard = () => {
   const { skills, address, followers, connections, collegeLogo, collegeName } =
     getLoggedUserProfileData();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+  const [profileURL, setProfileURL] = useState(blankProfile);
+
+  const onImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setProfileURL(URL.createObjectURL(event.target.files[0]));
+    }
+  };
+
+  const { darkTheme } = useContext(AuthContext);
+
   return (
-    <div className={styles.accountProfileCard}>
+    <div
+      className={styles.accountProfileCard}
+      style={{
+        color: darkTheme ? "#ddd" : "#333",
+        backgroundColor: darkTheme ? "#1b1f23" : "#fff",
+      }}
+    >
       <div className={styles.profilePicContainer}>
-        <ProfilePicture />
+        <ProfilePicture profileURL={profileURL} />
+        <div>
+          {" "}
+          <label htmlFor="editProfile">
+            <FontAwesomeIcon icon={faPencil} />{" "}
+            <input
+              type="file"
+              name="editProfile"
+              id="editProfile"
+              onChange={onImageChange}
+            />{" "}
+          </label>{" "}
+        </div>
       </div>
       <div className={styles.personalInformationContainer}>
         <div>
           <h2>{userInfo && userInfo.name}</h2>
-          <div className={styles.skills}>
+          <div
+            className={styles.skills}
+            style={{ color: darkTheme ? "#ffffff99" : "#00000099" }}
+          >
             {skills.map((skill, i) => (
               <p key={i}>{skill}</p>
             ))}
           </div>
-          <p className={styles.address}>
+          <p
+            className={styles.address}
+            style={{ color: darkTheme ? "#ffffff99" : "#00000099" }}
+          >
             {address}
             <span>Contact info</span>
           </p>
@@ -39,7 +77,14 @@ const AccountProfileCard = () => {
       <div className={styles.buttonsContainer}>
         <button>I want to...</button>
         <button>Add profile section</button>
-        <button>More</button>
+        <button
+          style={{
+            color: darkTheme ? "#fff" : "#000",
+            border: `2px solid ${darkTheme ? "#fff" : "#000"}`,
+          }}
+        >
+          More
+        </button>
       </div>
     </div>
   );

@@ -2,16 +2,16 @@ import React, { useContext, useRef, useState } from "react";
 import styles from "../../styles/authentication/LoginPage.module.css";
 import LoginPageNavList from "./LoginPageNavList";
 import { useNavigate } from "react-router-dom";
-import { getEmailRegEx, getPassWordRegEx } from "../../utils/getRegEx";
+import { getEmailRegEx, getPassWordRegEx } from "../../utils/authentication/getRegEx";
 import {
   getEmailErrorMessage,
   getPassWordErrorMessage,
-} from "../../utils/getErrorMessages";
+} from "../../utils/authentication/getErrorMessages";
 import axios from "axios";
-import { getProjectID } from "../../utils/getProjectID";
+import { getProjectID } from "../../utils/authentication/getProjectID";
 import {
   getErrorToast,
-} from "../../utils/getToastNotification";
+} from "../../utils/authentication/getToastNotification";
 import { ToastContainer } from "react-toastify";
 import { AuthContext } from "../../App";
 

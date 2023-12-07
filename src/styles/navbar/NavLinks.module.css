@@ -55,7 +55,7 @@
   align-items: center;
   color: var(--color-grey);
   > svg:hover {
-    color: #fff;
+    /* color: #fff; */
     cursor: pointer;
   }
 }

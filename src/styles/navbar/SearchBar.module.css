@@ -37,4 +37,8 @@
         width: 50vw;
       }
     }
+    .searchBarContainer>button{
+      padding-left: 0.5rem;
+      border-radius: 0;
+    }
   }

@@ -5,11 +5,16 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useRef, useState } from "react";
-import { getNewsList } from "../../utils/getNewsList";
+import React, { useContext, useRef, useState } from "react";
+import { getNewsList } from "../../utils/home/getNewsList";
 import styles from '../../styles/home/NewsCard.module.css';
+import { AuthContext } from "../../App";
 
 const News = () => {
+  const {darkTheme} = useContext(AuthContext);
+
+  const color = darkTheme?"#ddd":"#333";
+
   const newsList = getNewsList();
   const splicedList = newsList.slice(0, 5);
 
@@ -28,7 +33,7 @@ const News = () => {
   };
 
   return (
-    <div className={styles.newsCard}>
+    <div className={styles.newsCard} style={{color,backgroundColor:darkTheme?"#1b1f23":"#fff"}}>
       <div className={styles.newsCardHeader}>
         <p>LinkedIn News</p>
         <i onClick={()=>{modalRef.current.style.display="flex"}}>i</i>
@@ -41,21 +46,15 @@ const News = () => {
                 <FontAwesomeIcon icon={faCircleDot} />
                 <p>{data.headLine}</p>
               </section>
-              <p>{data.telecastedAt} ago</p>
+              <p style={{color:darkTheme?"#ffffff99":"#00000099"}}>{data.telecastedAt} ago</p>
             </div>
           );
         })}
       </section>
-      {showLess ? (
-        <button onClick={handleShowLess}>
-          Show less <FontAwesomeIcon icon={faChevronUp} />
+        <button onClick={showLess?handleShowLess:handleShowMore} style={{color}}>
+          {showLess?"Show less":"Show more"} <FontAwesomeIcon icon={showLess?faChevronUp:faChevronDown} />
         </button>
-      ) : (
-        <button onClick={handleShowMore}>
-          Show more <FontAwesomeIcon icon={faChevronDown} />
-        </button>
-      )}
-      <section className={styles.iCardTextHolder} ref={modalRef}>
+      <section className={styles.iCardTextHolder} ref={modalRef} style={{backgroundColor:darkTheme?"#1b1f23":"#fff"}}>
         <p>These are the day`s top professional news stories and conversations. <span>Learn more</span> about how they`re selected.</p>
         <FontAwesomeIcon icon={faXmark} onClick={()=>modalRef.current.style.display="none"}/>
       </section>

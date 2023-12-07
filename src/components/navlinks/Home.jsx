@@ -8,9 +8,10 @@ import PremiumCard from "../home/PremiumCard";
 import { ProfileCard } from "../home/ProfileCard";
 import { AuthContext } from "../../App";
 import styles from '../../styles/home/Home.module.css'
+import PostCreatedByUser from "../home/PostCreatedByUser";
 
 export const Home = () => {
-  const {darkTheme} = useContext(AuthContext);
+  const {darkTheme,newPostData} = useContext(AuthContext);
   return (
     <div className={styles.home}>
       <div className={styles.leftPortion}>
@@ -19,7 +20,8 @@ export const Home = () => {
       </div>
       <div className={styles.centerPortion}>
         <Newpost />
-        <div className={styles.sortBy} style={{backgroundColor:darkTheme?"#ffffff80":"#00000080"}}></div>
+        <div className={styles.sortBy} style={{backgroundColor:darkTheme?"#ffffff33":"#00000033"}}></div>
+        {newPostData.title&&<PostCreatedByUser {...newPostData}/>}
         <Posts />
       </div>
       <div className={styles.rightPortion}>

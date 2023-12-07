@@ -5,9 +5,6 @@
   }
   
   .accountProfileCard {
-    color: #ddd;
-    width: 60vw;
-    background-color: var(--border-grey);
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -47,7 +44,7 @@
         font-weight: 600;
       }
     }
-    .collegeContainer {
+    /* .collegeContainer {
       display: flex;
       flex-direction: row;
       flex: 1;
@@ -61,16 +58,18 @@
         font-weight: 600;
         font-size: 14px;
       }
-    }
+    } */
   }
   
   .address {
-    color: var(--font-light);
     font-weight: 400;
     font-size: 14px;
-    > span {
+    display: flex;
+    gap: 5px;
+    > p:last-child {
       color: var(--bg-blue);
       font-weight: 600;
+      cursor: pointer;
     }
   }
   
@@ -87,8 +86,11 @@
   
   .skills {
     display: flex;
+    flex-wrap: wrap;
     gap: 5px;
-    color: var(--font-light);
+    >p::after{
+      content: " |";
+    }
   }
   
   .buttonsContainer {
@@ -107,12 +109,9 @@
       &:first-child {
         background-color: var(--bg-blue);
         border: 2px solid var(--bg-blue);
-        color: #25303b;
       }
       &:last-child {
-        border: 2px solid #fff;
         background-color: transparent;
-        color: #fff;
       }
       &:nth-child(2) {
         border: 2px solid var(--bg-blue);

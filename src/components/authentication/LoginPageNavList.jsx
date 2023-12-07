@@ -3,9 +3,9 @@ import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../styles/authentication/LoginPageNavList.module.css";
-import { getLoginPageNavLinks } from "../../utils/getNavLinks";
+import { getLoginPageNavLinks } from "../../utils/home/getNavLinks";
 import { AuthContext } from "../../App";
-import { getWarningToast } from "../../utils/getToastNotification";
+import { getWarningToast } from "../../utils/authentication/getToastNotification";
 
 const LoginPageNavList = () => {
   const { jwtToken } = useContext(AuthContext);

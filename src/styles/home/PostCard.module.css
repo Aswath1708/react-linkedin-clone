@@ -35,7 +35,6 @@
         }
       }
       >p{
-        color: #ffffff99;
         font-size: small;
       }
     }
@@ -46,18 +45,16 @@
     padding: 0.5rem 0.55rem;
     border-radius: 50%;
   }
-  > svg:hover {
+  /* > svg:hover {
     background-color: #575c60;
-  }
+  } */
 }
 
 .likesCommentsCount {
   display: flex;
   justify-content: space-between;
-  color: #ffffff99;
   padding-top: 0.25rem;
   padding-bottom: 0.5rem;
-  border-bottom: 0.01rem solid #3d3d3d;
   font-size: 0.75rem;
   margin: 0 1rem;
 }
@@ -82,7 +79,7 @@
     }
   }
   > div:hover {
-    background-color: #575c60;
+    /* background-color: #575c60; */
     cursor: pointer;
   }
 }

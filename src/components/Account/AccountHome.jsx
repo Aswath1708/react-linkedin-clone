@@ -4,8 +4,17 @@ import ViewAnalyticsCard from "./ViewAnalyticsCard";
 
 const AccountHome = () => {
   return (
-    <div className="account-home">
-      <ViewAnalyticsCard/>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "10px",
+        marginTop: "5rem",
+      }}
+    >
+      <ViewAnalyticsCard />
       <AccountProfileCard />
     </div>
   );

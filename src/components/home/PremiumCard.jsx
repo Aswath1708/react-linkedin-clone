@@ -7,15 +7,17 @@ import { AuthContext } from "../../App";
 import ProfilePicture from "../Account/ProfilePicture";
 
 const PremiumCard = () => {
+  const {darkTheme} = useContext(AuthContext);
+  const color=darkTheme?"#ffffff99":"#00000099";
   const navigate = useNavigate();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   return (
-    <div className={styles.premiumCard} onClick={() => navigate("/premium")}>
-      <div className={styles.adOptions}>
-        <p>Ad</p>
-        <FontAwesomeIcon icon={faEllipsis} />
+    <div className={styles.premiumCard} onClick={() => navigate("/premium")} style={{backgroundColor:darkTheme?"#1b1f23":"#fff"}}>
+      <div className={styles.adOptions} >
+        <p style={{color}}>Ad</p>
+        <FontAwesomeIcon icon={faEllipsis} style={{color:darkTheme?"#ddd":"#333"}}/>
       </div>
-      <p>{userInfo&&userInfo.name}, unlock your full potential with LinkedIn Premium</p>
+      <p style={{color}}>{userInfo&&userInfo.name}, unlock your full potential with LinkedIn Premium</p>
       <div className={styles.images}>
         <ProfilePicture/>
         <img
@@ -23,7 +25,7 @@ const PremiumCard = () => {
           alt="ad-card-icon"
         />
       </div>
-      <p>See who's viewed your profile in the last 90 days</p>
+      <p style={{color}}>See who's viewed your profile in the last 90 days</p>
       <button onClick={() => navigate("/premium")}>Try for Free</button>
     </div>
   );

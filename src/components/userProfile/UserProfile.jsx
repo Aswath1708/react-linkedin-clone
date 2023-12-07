@@ -1,60 +1,48 @@
-import React, { useState } from "react";
-import styles from "../../styles/home/UserProfile.module.css";
-import ProfilePicture from "../Account/ProfilePicture";
-import { getSkills } from "../../utils/getSkills";
-import {
-  faLock,
-  faUserCheck,
-  faUserPlus,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import collegeLogo from "../../assets/collegeLogo/college-logo.jfif";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { getProjectID } from "../../utils/authentication/getProjectID";
+import UserProfileCard from "./UserProfileCard";
+import Skills from "./Skills";
+import Education from "./Education";
+import PremiumCard from '../home/PremiumCard';
+import Footer from '../home/Footer';
 
 const UserProfile = () => {
-  const skills = getSkills();
-  const [connected, setConnected] = useState(false);
+  const token = JSON.parse(localStorage.getItem("jwtToken"));
+  const { id } = useParams();
+  const [userInfo, setUserInfo] = useState();
 
-  const followerInfo = JSON.parse(localStorage.getItem("followerInfo"));
+  const userProfileApiCall = () => {
+    axios
+      .get(`https://academics.newtonschool.co/api/v1/linkedin/user/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          projectID: `${getProjectID()}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.data);
+        setUserInfo({...res.data.data})
+      })
+      .catch((err) => alert(err.response.data.message));
+  };
+
+  useEffect(() => {
+    userProfileApiCall();
+  }, [id]);
 
   return (
-    <div className={styles.accountProfileCard} style={{ marginTop: "5rem" }}>
-      <div className={styles.profilePicContainer}>
-        <ProfilePicture />
-      </div>
-      <div className={styles.personalInformationContainer}>
+    <div style={{ display: "flex", justifyContent: "center" ,marginTop:"5rem",gap:"2vw"}}>
+        {userInfo&&<div style={{display:"flex",flexDirection:"column",gap:"1vh",width: "60%"}}>
+        <UserProfileCard {...userInfo}/>
+          <Skills skills={userInfo.skills}/>
+          <Education education={userInfo.education}/>
+        </div>}
         <div>
-          <h2 className={styles.name}>{followerInfo.author.name}</h2>
-          <p className={styles.skills}>
-            {skills.map((skill, i) => (
-              <p key={i}>{skill}</p>
-            ))}
-          </p>
-          <p className={styles.address}>
-            Thanjavur, Tamil Nadu, India .
-            <span>Contact info</span>
-          </p>
-          <div className={styles.followersAndConnections}>
-            <p>76 followers</p>.<p>{connected ? 60 : 59} connections</p>
-          </div>
+        <PremiumCard/>
+        <Footer/>
         </div>
-        <div className={styles.collegeContainer}>
-          <div>
-            <img src={collegeLogo} alt="college-logo-img" />
-          </div>
-          <p>{followerInfo.channel.name}</p>
-        </div>
-      </div>
-      <div className={styles.buttonsContainer}>
-        <button onClick={() => setConnected(!connected)}>
-          <FontAwesomeIcon icon={connected ? faUserCheck : faUserPlus} />
-          {connected ? "Connection" : "Connect"}
-        </button>
-        <button>
-          <FontAwesomeIcon icon={faLock} />
-          Message
-        </button>
-        <button>More</button>
-      </div>
     </div>
   );
 };

@@ -33,6 +33,7 @@
     color: #ddd;
     font-size: 0.9rem;
     transition: 0.2s;
+    cursor: pointer;
   }
   > input::placeholder {
     font-weight: bold;

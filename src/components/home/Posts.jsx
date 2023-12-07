@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Post } from "./Post";
 import { Loader } from "../loader/Loader";
+import { getProjectID } from "../../utils/authentication/getProjectID";
 
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ export const Posts = () => {
       setLoadingState(true);
       const posts = await axios.get(
         "https://academics.newtonschool.co/api/v1/linkedin/post",
-        { headers: { projectId: "f104bi07c490" } }
+        { headers: { projectId: `${getProjectID()}` } }
       );
       console.log(posts.data.data);
       setPosts(posts.data.data);
@@ -20,7 +21,6 @@ export const Posts = () => {
       console.log(err);
     } finally {
       setLoadingState(false);
-      console.log("fetch finished", posts);
     }
   };
   useEffect(() => {

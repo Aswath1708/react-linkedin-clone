@@ -1,9 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../styles/home/NewPost.module.css";
 import ProfilePicture from "../Account/ProfilePicture";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../App";
-import { getNewPostOptions } from "../../utils/getNewPostOptions";
+import { getNewPostOptions } from "../../utils/home/getNewPostOptions";
+import CreateAPost from "../posts/CreateAPost";
+import { ToastContainer, toast } from "react-toastify";
 
 export const Newpost = () => {
   const { darkTheme } = useContext(AuthContext);
@@ -11,6 +13,13 @@ export const Newpost = () => {
   const mouseOver = (e) =>
     (e.target.style.backgroundColor = darkTheme ? "#575c60" : "#ddd");
   const moustOut = (e) => (e.target.style.backgroundColor = "transparent");
+
+  const [showCreatePost,setShowCreatePost] = useState(false);
+
+  
+
+  const notify = () => toast.info("Under Construction!",{autoClose:3000})
+
   return (
     <div
       className={styles.newPost}
@@ -28,8 +37,10 @@ export const Newpost = () => {
           }}
           onMouseOver={mouseOver}
           onMouseOut={moustOut}
+          onClick={()=>setShowCreatePost(true)}
         />
       </div>
+      {showCreatePost&&<CreateAPost setShowCreatePost={setShowCreatePost}/>}
       <div className={styles.newPostOptions}>
         {newPostOptions.map(({ icon, flip, color, text }, i) => {
           return (
@@ -38,6 +49,7 @@ export const Newpost = () => {
               style={{ color: darkTheme ? "#ffffff99" : "#00000099" }}
               onMouseOver={mouseOver}
               onMouseOut={moustOut}
+              onClick={notify}
             >
               <FontAwesomeIcon
                 icon={icon}
@@ -49,6 +61,7 @@ export const Newpost = () => {
           );
         })}
       </div>
+      <ToastContainer/>
     </div>
   );
 };

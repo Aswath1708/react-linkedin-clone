@@ -1,10 +1,10 @@
 import React from 'react'
-import blankPofile from '../../assets/profilePicture/blank-profile-picture.webp'
+import blankProfile from '../../assets/profilePicture/blank-profile-picture.webp'
 
-const ProfilePicture = () => {
+const ProfilePicture = ({profileURL=blankProfile}) => {
   return (
     <div>
-        <img src={blankPofile} alt="profile-picture" />
+        <img src={profileURL} alt="profile-picture" />
     </div>
   )
 }

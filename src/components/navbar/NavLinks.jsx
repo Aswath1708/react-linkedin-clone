@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Business } from "../navlinks/Business";
 import { useState } from "react";
 import styles from "../../styles/navbar/NavLinks.module.css";
-import { getNavLinks } from "../../utils/getNavLinks";
+import { getNavLinks } from "../../utils/home/getNavLinks";
 import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
 import { ReactComponent as BusinessLink } from "../../assets/businessLink/BusinessLink.svg";
 import DropDown from "./DropDown";

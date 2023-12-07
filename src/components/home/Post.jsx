@@ -1,50 +1,67 @@
-import { faCommentDots, faThumbsUp } from "@fortawesome/free-regular-svg-icons";
-import {
-  faEllipsis,
-  faPaperPlane,
-  faRepeat,
-} from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
+import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { ReactComponent as SolidLikeBtn } from "../../assets/likeButton/SolidLikeBtn.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/home/PostCard.module.css";
-import {AuthContext} from '../../App'
+import { AuthContext } from "../../App";
+import { getReactionButtons } from "../../utils/home/getReactionButtons";
+import { ToastContainer, toast } from "react-toastify";
 
 export const Post = (props) => {
+  const { darkTheme } = useContext(AuthContext);
+  const reactionButtons = getReactionButtons();
 
-  const {darkTheme} = useContext(AuthContext);
+  const notify = () => toast.info("Under Construction!",{autoClose:3000});
 
   const {
     _id,
-    author: { name, profileImage },
+    author: { _id:userId,name, profileImage },
     channel: { name: profession, image },
     commentCount,
     likeCount,
     content,
   } = props;
   const [isLiked, setIsLiked] = useState(false);
-  // useEffect(()=>{
-  localStorage.setItem("followerInfo", JSON.stringify(props));
-  // },[_id])
 
   return (
-    <div className={styles.postCard} style={{backgroundColor:darkTheme?"#1b1f23":"#fff"}}>
+    <div
+      className={styles.postCard}
+      style={{ backgroundColor: darkTheme ? "#1b1f23" : "#fff" ,borderBottom:`1px solid ${darkTheme?"#ffffff50":"#00000050"}`}}
+    >
       <div className={styles.profileDetails}>
         <div>
           <img src={profileImage} alt="profile-image" />
           <div>
-            <Link to={`/home/in/${_id}`} style={{color:darkTheme?"#ddd":"#333"}}>{name}</Link>
-            <p style={{color:darkTheme?"#ffffff99":"#000000"}}>{profession}</p>
+            <Link
+              to={`/home/id/${userId}`}
+              style={{ color: darkTheme ? "#ddd" : "#333" }}
+            >
+              {name}
+            </Link>
+            <p style={{ color: darkTheme ? "#ffffff99" : "#000000" }}>
+              {profession}
+            </p>
           </div>
         </div>
-        <FontAwesomeIcon icon={faEllipsis} style={{color:darkTheme?"#ddd":"#333"}}/>
+        <FontAwesomeIcon
+          icon={faEllipsis}
+          style={{ color: darkTheme ? "#ddd" : "#333" }}
+          onClick={notify}
+        />
       </div>
 
-      <p style={{color:darkTheme?"#ffffff99":"#000000"}}>{content}</p>
+      <p style={{ color: darkTheme ? "#ffffff99" : "#000000" }}>{content}</p>
       <img src={image} alt="content-image" />
       <div>
-        <div className={styles.likesCommentsCount}>
+        <div
+          className={styles.likesCommentsCount}
+          style={{
+            color: darkTheme ? "#ffffff99" : "#00000099",
+            borderBottom: `1px solid ${darkTheme ? "#ffffff66" : "#00000066"}`,
+          }}
+        >
           <div>{isLiked ? likeCount + 1 : likeCount} likes</div>
           <div>{commentCount} comments</div>
         </div>
@@ -53,24 +70,27 @@ export const Post = (props) => {
             {isLiked ? (
               <SolidLikeBtn className={styles.solidLikeBtn} />
             ) : (
-              <FontAwesomeIcon icon={faThumbsUp} flip="horizontal" />
+              <FontAwesomeIcon
+                icon={faThumbsUp}
+                flip="horizontal"
+                style={{ color: darkTheme ? "#ffffff99" : "#00000099" }}
+              />
             )}
-            <span>Like</span>
+            <span style={{ color: darkTheme ? "#ffffff99" : "#00000099" }}>
+              Like
+            </span>
           </div>
-          <div>
-            <FontAwesomeIcon icon={faCommentDots} />
-            <span>Comment</span>
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faRepeat} />
-            <span>Repost</span>
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faPaperPlane} />
-            <span>Send</span>
-          </div>
+          {reactionButtons.map(({ icon, text }, i) => {
+            return (
+              <div style={{ color: darkTheme ? "#ffffff99" : "#00000099" }} onClick={notify}>
+                <FontAwesomeIcon icon={icon}/>
+                <span>{text}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

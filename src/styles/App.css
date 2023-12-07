@@ -12,7 +12,6 @@ body {
     Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica,
     Arial, sans-serif;
-  background-color: #000;
   color: white;
 }
 
@@ -25,53 +24,12 @@ a {
   text-decoration: none;
 }
 
-
-
 .posts-container {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-
-.account-home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 5rem;
-}
-
-.analytics-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #1b1f23;
-  width: 60vw;
-  padding: 1rem 2rem 1rem 1rem;
-  border-radius: 0.75rem;
   > div {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    > p:first-child {
-      font-weight: 600;
-      font-size: 14px;
-    }
-    > p:nth-child(2) {
-      color: gray;
-      font-size: 12px;
-      font-weight: 500;
-    }
-  }
-
-  > a {
-    color: rgb(177, 177, 177);
-    font-weight: 600;
-    &:hover {
-      color: #039de5;
-      text-decoration: underline;
-    }
+    border: none;
   }
 }

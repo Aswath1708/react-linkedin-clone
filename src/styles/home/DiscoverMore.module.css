@@ -1,5 +1,4 @@
 .discoverMore {
-    background-color: #1b1f23;
     border-radius: 0.5rem;
     margin-top: 0.4rem;
     display: flex;
@@ -9,7 +8,7 @@
   }
   
   .discoverMore p {
-    color: #70b5f9;
+    color: #2d96ff;
     font-weight: 600;
     font-size: 13px;
     margin-left: 0.75rem;
@@ -27,7 +26,6 @@
   }
   
   .discoverMore section span {
-    color: #ddd;
     font-size: 24px;
     margin-right: 0.5rem;
   }
@@ -39,13 +37,12 @@
     align-items: center;
     font-weight: 600;
     font-size: 14px;
-    border-top: 1px solid #3d3d3d;
     border-radius: 0 0 0.5rem 0.5rem;
   }
   
-  .discoverMore > div:hover {
+  /* .discoverMore > div:hover {
     background-color: #575c60;
-  }
+  } */
   
   @media screen and (width<=600px){
     .discoverMore{

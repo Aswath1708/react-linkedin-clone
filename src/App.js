@@ -19,36 +19,53 @@ import SearchResults from "./components/search/SearchResults";
 export const AuthContext = createContext();
 
 function App() {
+  const [jwtToken, setJwtToken] = useState("");
+  const [userInfo, setUserInfo] = useState({});
+  const [darkTheme, setDarkTheme] = useState(true);
+  const [newPostData, setNewPostData] = useState({
+    title: "",
+    content: "",
+    // image:""
+  });
 
-  const [jwtToken,setJwtToken] = useState("");
-  const [userInfo,setUserInfo] = useState({});
-  const [darkTheme,setDarkTheme] = useState(true);
+  // const [postImage,setPostImage] = useState("");
 
-  document.body.style.backgroundColor = darkTheme?"#000":"#ddd";
+  document.body.style.backgroundColor = darkTheme ? "#000" : "#ddd";
 
   return (
-    <AuthContext.Provider value={{jwtToken,setJwtToken,userInfo,setUserInfo,darkTheme,setDarkTheme}}>
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/home/*" element={<Navbar />}>
-          <Route path="feed/*" element={<Home />} />
-          <Route path="my-network" element={<MyNetwork />} />
-          <Route path="jobs" element={<Jobs />} />
-          <Route path="messages" element={<Messaging />} />
-          <Route path="notifications" element={<Notifications />} />
-          <Route path="me" element={<Me />} />
-          <Route path="account" element={<AccountHome />} />
-          <Route path="feed/account" element={<AccountHome />} />
-          <Route path="in/:id" element={<UserProfile />} />
-          <Route path="search/:searchterm" element={<SearchResults/>}/>
-        </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/premium" element={<Premium />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </div>
+    <AuthContext.Provider
+      value={{
+        jwtToken,
+        setJwtToken,
+        userInfo,
+        setUserInfo,
+        darkTheme,
+        setDarkTheme,
+        newPostData,
+        setNewPostData
+      }}
+    >
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home/*" element={<Navbar />}>
+            <Route path="feed/*" element={<Home />} />
+            <Route path="my-network" element={<MyNetwork />} />
+            <Route path="jobs" element={<Jobs />} />
+            <Route path="messages" element={<Messaging />} />
+            <Route path="notifications" element={<Notifications />} />
+            <Route path="me" element={<Me />} />
+            <Route path="account" element={<AccountHome />} />
+            <Route path="feed/account" element={<AccountHome />} />
+            <Route path="id/:id" element={<UserProfile />} />
+            <Route path="search/:searchterm" element={<SearchResults />} />
+          </Route>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/premium" element={<Premium />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </div>
     </AuthContext.Provider>
   );
 }

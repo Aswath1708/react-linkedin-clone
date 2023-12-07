@@ -1,8 +1,6 @@
 .newsCard {
   width: 20vw;
-  background-color: #1b1f23;
   border-radius: 0.5rem;
-  color: #ddd;
   font-size: 14px;
   font-weight: 600;
   padding: 1rem 0;
@@ -21,9 +19,9 @@
     display: flex;
     align-items: center;
   }
-  > button:hover {
+  /* > button:hover {
     background-color: #575c60;
-  }
+  } */
 }
 
 .newsCardHeader {
@@ -69,10 +67,10 @@
       margin-left: 1rem;
     }
   }
-  > div:hover {
+  /* > div:hover {
     background-color: #575c60;
     width: 100%;
-  }
+  } */
 }
 
 .iCardTextHolder {
