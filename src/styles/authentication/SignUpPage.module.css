@@ -144,3 +144,37 @@
   font-size: 12px;
 }
 
+@media screen and (width<=600px) {
+  .headerContainer{
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 8px;
+  }
+  .signUpFormContainer{
+    gap: 0.5em;
+  }
+  .signUpFormContainer h1{
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .signUpPage form{
+    width: 100%;
+    padding: 10px;
+  }
+  .signUpPage{
+    background-color: #fff;
+  }
+}
+
+@media screen and (600px<width<=1000px) {
+  .signUpPage form{
+    width: 80%;
+  }
+}
+
+@media screen and (1000px<width<=1200px) {
+  .signUpPage form{
+    width: 60%;
+  }
+}
