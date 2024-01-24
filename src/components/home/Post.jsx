@@ -17,8 +17,8 @@ export const Post = (props) => {
 
   const {
     _id,
-    author: { _id:userId,name, profileImage },
-    channel: { name: profession, image },
+    // author: { _id:userId,name, profileImage },
+    // channel: { name: profession, image },
     commentCount,
     likeCount,
     content,
@@ -32,16 +32,16 @@ export const Post = (props) => {
     >
       <div className={styles.profileDetails}>
         <div>
-          <img src={profileImage} alt="profile-image" />
+          {/* <img src={profileImage} alt="profile-image" /> */}
           <div>
-            <Link
+            {/* <Link
               to={`/home/id/${userId}`}
               style={{ color: darkTheme ? "#ddd" : "#333" }}
             >
               {name}
-            </Link>
+            </Link> */}
             <p style={{ color: darkTheme ? "#ffffff99" : "#000000" }}>
-              {profession}
+              {/* {profession}   */}
             </p>
           </div>
         </div>
@@ -53,7 +53,7 @@ export const Post = (props) => {
       </div>
 
       <p style={{ color: darkTheme ? "#ffffff99" : "#000000" }}>{content}</p>
-      <img src={image} alt="content-image" />
+      {/* <img src={image} alt="content-image" /> */}
       <div>
         <div
           className={styles.likesCommentsCount}

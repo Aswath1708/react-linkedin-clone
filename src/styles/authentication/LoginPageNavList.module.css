@@ -78,3 +78,18 @@
     background-color: #0a66c21f;
   }
   
+  @media screen and (width<1000px) {
+    .loginNavBar ul{
+      display: none;
+    }
+    .loginNavBar{
+      padding-right: 0;
+    }
+  }
+
+  @media screen and (width<780px) {
+
+    .loginNavBar h1{
+      font-size: 16px;
+    }
+  }

@@ -122,7 +122,7 @@ const SignUp = () => {
             required
           />
           <p className={styles.error}>{userNameErrorMessage}</p>
-          <label htmlFor="mailOrPhone">Email or phone number</label>
+          <label htmlFor="mailOrPhone">Email</label>
           <input
             type="text"
             name="mailOrPhone"
