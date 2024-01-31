@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import styles from '../../styles/search/SearchResultsCard.module.css'
 import { AuthContext } from '../../App'
+import defaultProfile from '../../assets/defaultPost/defaultProfile.png'
 
 const SearchResultsCard = ({ author:{name,profileImage}, searchTerm }) => {
     const [following,setFollowing] = useState(false);
@@ -8,7 +9,7 @@ const SearchResultsCard = ({ author:{name,profileImage}, searchTerm }) => {
   return (
     <div className={styles.container} style={{border:`1px solid ${darkTheme?"#ffffff50":"#00000050"}`}}>
       <div className={styles.imageContainer}>
-        <img src={profileImage} alt="profile" />
+        <img src={profileImage==null?defaultProfile:profileImage} alt="profile" />
       </div>
       <div className={styles.textContainer}>
         <p><a href="#" style={{color:darkTheme?"#fff":"#000"}}>{name}</a></p>
