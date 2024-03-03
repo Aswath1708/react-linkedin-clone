@@ -54,7 +54,7 @@ export const Post = (props) => {
       </div>
 
       <p style={{ color: darkTheme ? "#ffffff99" : "#000000" }}>{content}</p>
-      <img src={images==null?defaultProfile:images} alt="content-image" />
+      <img src={(images&&images.length!=0)?images[0]:defaultProfile} alt="content-image" />
       <div>
         <div
           className={styles.likesCommentsCount}
@@ -83,7 +83,7 @@ export const Post = (props) => {
           </div>
           {reactionButtons.map(({ icon, text }, i) => {
             return (
-              <div style={{ color: darkTheme ? "#ffffff99" : "#00000099" }} onClick={notify}>
+              <div style={{ color: darkTheme ? "#ffffff99" : "#00000099" }} onClick={notify} key={i}>
                 <FontAwesomeIcon icon={icon}/>
                 <span>{text}</span>
               </div>

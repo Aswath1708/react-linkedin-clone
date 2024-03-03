@@ -15,6 +15,7 @@ import { Premium } from "./components/navlinks/Premium";
 import UserProfile from "./components/userProfile/UserProfile";
 import { createContext, useState } from "react";
 import SearchResults from "./components/search/SearchResults";
+import blankProfile from "./assets/profilePicture/blank-profile-picture.webp";
 
 export const AuthContext = createContext();
 
@@ -22,13 +23,7 @@ function App() {
   const [jwtToken, setJwtToken] = useState("");
   const [userInfo, setUserInfo] = useState({});
   const [darkTheme, setDarkTheme] = useState(true);
-  const [newPostData, setNewPostData] = useState({
-    title: "",
-    content: "",
-    // image:""
-  });
-
-  // const [postImage,setPostImage] = useState("");
+  const [profileImage, setProfileImage] = useState(blankProfile);
 
   document.body.style.backgroundColor = darkTheme ? "#000" : "#ddd";
 
@@ -41,8 +36,8 @@ function App() {
         setUserInfo,
         darkTheme,
         setDarkTheme,
-        newPostData,
-        setNewPostData
+        profileImage,
+        setProfileImage,
       }}
     >
       <div className="App">

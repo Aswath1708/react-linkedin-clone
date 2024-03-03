@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import ProfilePicture from "../Account/ProfilePicture";
 import styles from "../../styles/posts/CreateAPost.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,26 +13,35 @@ const CreateAPost = ({ setShowCreatePost }) => {
   const [newPostInfo, setNewPostInfo] = useState({
     title: "",
     content: "",
-    images: "",
+    images: null,
   });
 
   const createPostApiCall = () => {
+    const formData = new FormData();
+
+    formData.append("title", newPostInfo.title);
+    formData.append("content", newPostInfo.content);
+    formData.append("images", newPostInfo.images);
+
+    console.log(formData);
+
     axios
-      .post("https://academics.newtonschool.co/api/v1/linkedin/post/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          projectID: `${getProjectID()}`,
-        },
-        body: {
-          ...newPostInfo,
-        },
-      })
+      .post(
+        "https://academics.newtonschool.co/api/v1/linkedin/post/",
+
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            projectID: `${getProjectID()}`,
+          },
+        }
+      )
       .then((res) => console.log(res))
       .catch((err) => alert(err.response.data.message));
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     createPostApiCall();
   };
   return (
@@ -46,7 +55,9 @@ const CreateAPost = ({ setShowCreatePost }) => {
             onClick={() => setShowCreatePost(false)}
           />
         </header>
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+        >
           <label htmlFor="title">
             Title:
             <input
@@ -76,9 +87,9 @@ const CreateAPost = ({ setShowCreatePost }) => {
               type="file"
               id="images"
               onChange={(e) =>
-                setNewPostInfo({ ...newPostInfo, images: e.target.value })
+                setNewPostInfo({ ...newPostInfo, images: e.target.files[0] })
               }
-              value={newPostInfo["images"]}
+              
               required
             />
           </label>

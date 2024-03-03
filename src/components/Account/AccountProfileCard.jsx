@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styles from "../../styles/accountprofile/AccountProfileCard.module.css";
 import ProfilePicture from "./ProfilePicture";
 import { getLoggedUserProfileData } from "../../utils/getProfileData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
-import blankProfile from "../../assets/profilePicture/blank-profile-picture.webp";
 import { AuthContext } from "../../App";
 
 const AccountProfileCard = () => {
@@ -12,11 +11,11 @@ const AccountProfileCard = () => {
     getLoggedUserProfileData();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-  const [profileURL, setProfileURL] = useState(blankProfile);
+  const {setProfileImage} = useContext(AuthContext);
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
-      setProfileURL(URL.createObjectURL(event.target.files[0]));
+      setProfileImage(URL.createObjectURL(event.target.files[0]));
     }
   };
 
@@ -31,7 +30,7 @@ const AccountProfileCard = () => {
       }}
     >
       <div className={styles.profilePicContainer}>
-        <ProfilePicture profileURL={profileURL} />
+        <ProfilePicture />
         <div>
           {" "}
           <label htmlFor="editProfile">

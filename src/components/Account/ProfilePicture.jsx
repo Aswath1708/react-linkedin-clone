@@ -1,10 +1,13 @@
-import React from 'react'
-import blankProfile from '../../assets/profilePicture/blank-profile-picture.webp'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../App'
 
-const ProfilePicture = ({profileURL=blankProfile}) => {
+const ProfilePicture = () => {
+
+  const {profileImage} = useContext(AuthContext);
+
   return (
     <div>
-        <img src={profileURL} alt="profile-picture" />
+        <img src={profileImage} alt="profile" />
     </div>
   )
 }
